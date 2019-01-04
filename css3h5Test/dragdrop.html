@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>  
+<html>  
+    <head lang="en">  
+      <meta charset="UTF-8">  
+      <title></title>  
+      <style>  
+        body {  
+          text-align: center;  
+        }  
+        .src{
+        	width: 100px;
+        }
+        #box{
+        	width: 20%;
+        	min-height: 200px;
+        	margin: 10px auto;
+        	border: 2px solid #ccc;
+        	
+        }
+      </style>  
+    </head>  
+    <body>  
+      <h3>拖动图片到box</h3>  
+      <hr/>  
+      <div id="box">
+      	<img id='boxImg' data-num="1" src="img/七夕有礼1.jpg" width="100%" />
+      </div>
+      <img id="p3" class="src" src="img/1378437241149.jpg">  
+      <img id="p4" class="src" src="img/1378437241149.jpg">  
+      <img id="p5" class="src" src="img/1378437241149.jpg">  
+      
+      <script>  
+      
+        //为源对象添加事件监听 —— 记录拖动了哪一个源对象  
+        var srcList = document.querySelectorAll('.src');//找到全部img元素  
+        var box=document.getElementById("box");
+        for(var i=0; i<srcList.length; i++){ //遍历img元素  
+          var p = srcList[i];  
+          p.ondragstart = function(e){ //开始拖动源对象  
+          	console.log("tuo le")
+            e.dataTransfer.setData('PlaneID',this.id);//保存数据--该img元素的id  
+            e.dataTransfer.setData('text',this.src);//保存数据--该img元素的id  
+            
+		  }  
+          p.ondrag = function(){}  
+          p.ondragend = function(){}  
+        }    
+        
+        //拖放至box
+        box.ondragover=function(e){
+        	e.preventDefault();  //阻止默认行为，使得drop可以触发  
+        }
+        box.ondrop=function(e){
+        	var trans = e.dataTransfer;
+			var src = trans.getData("text");
+			var id = trans.getData("PlaneID");
+			var boxImg=document.getElementById("boxImg");
+			var num=parseInt(boxImg.getAttribute("data-num"))+1;
+			if(num <= 4){
+				boxImg.setAttribute("data-num",num);
+				boxImg.src="img/七夕有礼"+(num)+".jpg";
+				if(num==4){
+					alert("搭建完毕");
+				}
+			}else{
+				alert("搭建完毕");
+			}
+        }
+      
+      </script>  
+	</body>  
+</html>  

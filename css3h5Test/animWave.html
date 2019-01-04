@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>波浪效果</title>
+	</head>
+	<style type="text/css">
+		.container {
+		  position: absolute;
+		  width: 200px;
+		  height: 200px;
+		  padding: 5px;
+		  border: 5px solid #76daff;
+		  top: 50%;
+		  left: 50%;
+		  -webkit-transform: translate(-50%, -50%);
+		          transform: translate(-50%, -50%);
+		  border-radius: 50%;
+		  overflow: hidden;
+		}
+		
+		.wave {
+		  position: relative;
+		  width: 200px;
+		  height: 200px;
+		  background-color: #76daff;
+		  border-radius: 50%;
+		}
+		.wave::before, .wave::after {
+		  content: "";
+		  position: absolute;
+		  width: 400px;
+		  height: 400px;
+		  top: 0;
+		  left: 50%;
+		  background-color: rgba(255, 255, 255, 0.4);
+		  border-radius: 45%;
+		  -webkit-transform: translate(-50%, -70%) rotate(0);
+		          transform: translate(-50%, -70%) rotate(0);
+		  -webkit-animation: rotate 6s linear infinite;
+		          animation: rotate 6s linear infinite;
+		  z-index: 10;
+		}
+		.wave::after {
+		  border-radius: 47%;
+		  background-color: rgba(255, 255, 255, 0.9);
+		  -webkit-transform: translate(-50%, -70%) rotate(0);
+		          transform: translate(-50%, -70%) rotate(0);
+		  -webkit-animation: rotate 10s linear -5s infinite;
+		          animation: rotate 10s linear -5s infinite;
+		  z-index: 20;
+		}
+		
+		@-webkit-keyframes rotate {
+		  50% {
+		    -webkit-transform: translate(-50%, -73%) rotate(180deg);
+		            transform: translate(-50%, -73%) rotate(180deg);
+		  }
+		  100% {
+		    -webkit-transform: translate(-50%, -70%) rotate(360deg);
+		            transform: translate(-50%, -70%) rotate(360deg);
+		  }
+		}
+		
+		@keyframes rotate {
+		  50% {
+		    -webkit-transform: translate(-50%, -73%) rotate(180deg);
+		            transform: translate(-50%, -73%) rotate(180deg);
+		  }
+		  100% {
+		    -webkit-transform: translate(-50%, -70%) rotate(360deg);
+		            transform: translate(-50%, -70%) rotate(360deg);
+		  }
+		}
+		
+		#container{
+                position:relative;
+            }
+            #container span{
+                width:5px;
+                height: 0px;
+                top:50px;
+                transform: translate(0,-50%);
+                position:absolute;
+                background:red;
+                -webkit-animation: bodong 0.7s infinite  ease;
+            }
+ 
+            #container span:first-child{
+                left:0px;
+                -webkit-animation-delay:.5s;
+            }
+ 
+            #container span:nth-child(2){
+                left:7px;
+                -webkit-animation-delay:.8s;
+ 
+            }
+            #container span:nth-child(3){
+                left:14px;
+                 -webkit-animation-delay:1.3s;
+            }
+             #container span:nth-child(4){
+                left:21px;
+                 -webkit-animation-delay:1.7s;
+            }
+            #container span:nth-child(5){
+                left:28px;
+                 -webkit-animation-delay:2s;
+            }
+ 
+            @-webkit-keyframes bodong{
+                0%{height:5px;}
+                30%{height:15px;}
+                60%{height:20px;}
+                80%{height:15px;}
+                100%{height:5px;}
+            }
+	</style>
+	<body>
+		<!-- 关键点在于使用 border-radiuss 生成一个不太圆的圆，然后对纯色块进行切割-->
+		<div class="container">
+		    <div class="wave"></div>
+		</div>
+		<div id='container'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<title>下雪的动画2</title>
+		<style>
+			body{margin:0;padding:0;list-style-type:none;}	
+			html,body{height:100%}
+			.header{
+				margin: 0 0 30px;
+				background-color: #3dc5df;
+				background-image: url(img/snow-bg2.png) ;
+				background-repeart:repeat-y;
+				-webkit-animation: animate-snow 9s linear infinite;
+				animation: animate-snow 9s linear infinite;		
+				width: 100%; height:100vh;
+			}
+			
+			@-webkit-keyframes animate-snow
+			{
+				0% { background-position: center 0, 0 0;}
+				100% { background-position: center 500px, 0 0;}
+			}
+			@keyframes animate-snow
+			{
+				0% { background-position: center 0, 0 0;}
+				100% { background-position: center 500px, 0 0;}
+			}	
+			
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<!--<div class="wrapper"></div>-->
+		</div>
+	</body>
+		
+</html>

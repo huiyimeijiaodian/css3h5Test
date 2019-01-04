@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>flexbox布局</title>
+		<style>
+			.flex-container{
+				display: flex;
+				/*flex-direction: column;*/
+				background: #ccc;
+				flex-wrap:nowrap;/*不换行，子元素自适应父元素宽度*/
+				justify-content:space-around ;/*flex-start/flex-end/space-between*/
+				/*align-items:flex-end;*/
+				/*width:1000px;*/
+			}
+			.flex-container >div{
+				width: 200px;
+				height: 100px;
+				background: #4bc;
+				margin:10px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="flex-container">
+			<div>one</div>
+			<div>two</div>
+			<div>three</div>
+			<div>four</div>
+		</div>
+	</body>
+</html>

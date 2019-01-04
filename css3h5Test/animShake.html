@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>礼盒抖动效果</title>
+	</head>
+	<style>
+		*{margin: 0;padding: 0;}
+		.content{
+			margin: 100px;
+		}
+		.gift_box{
+			width: 200px;
+		}
+		.anim_shake{
+			animation: animShake 0.8s infinite linear;
+			transform-origin: bottom;
+		}
+		@keyframes animShake{
+			0,50%,100%{transform: rotate(0);}
+			25%{
+				transform: rotate(5deg);
+			}
+			75%{
+				transform: rotate(-5deg);
+			}
+		}
+		.anim_scale{
+			animation: animScale 1.2s infinite linear;
+			transform-origin: bottom;
+		}
+		@keyframes animScale{
+			0,100%{transform:scale(0)}
+			50%{
+				transform: scale(1.1)
+			}
+		}
+	</style>
+	<body>
+		<div class="content">
+			<img class="gift_box anim_shake" src="img/gift_unopen.png"/>
+		</div>
+		<div class="content">
+			<img class="gift_box anim_scale" src="img/gift_unopen.png"/>
+		</div>
+	</body>
+</html>

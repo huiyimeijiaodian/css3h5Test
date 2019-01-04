@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<title>下雪的动画</title>
+		<style>
+			body{
+				background: #3dc5df;
+			}
+			@keyframes mysnow{
+				0%{
+					bottom:100%;
+					opacity:0;
+				}
+				50%{
+					opacity:0.7;
+					transform: rotate(180deg);
+				}
+				100%{
+					transform: rotate(0deg);
+					opacity: 0;
+					bottom:0;
+				}
+			}
+			@-webkit-keyframes mysnow{
+				0%{
+					bottom:100%;
+					opacity:0;
+				}
+				50%{
+					opacity:0.7;
+					-webkit-transform: rotate(180deg);
+				}
+				100%{
+					-webkit-transform: rotate(0deg);
+					opacity: 0;
+					bottom:0;
+				}
+			}
+			.snow-img{
+				position:absolute;
+				opacity:0;
+				animation: mysnow 5s ;
+				-webkit-animation: mysnow 5s ;
+				width: 15px;
+			}
+			.snow-img.snow1{
+				width: 20px;
+			}
+			.snow-img.snow2{
+				width: 10px;
+			}
+			.one-snow{
+				position:fixed;
+				/*background: rgba(255,0,0,0.3);
+				width: 2px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="snowbg" ></div>
+	</body>
+	<script>
+		(function(){
+			function snow(left,height,num){
+				var div = document.createElement("div");
+				var img = document.createElement("img");
+				img.className = "snow-img snow"+num;
+				img.src = 'img/snow1.png';
+				div.appendChild(img);
+				div.style.left=left+"px";
+				div.style.height=height+"px";
+				console.log(left,height);
+				div.className="one-snow";
+				document.getElementById("snowbg").appendChild(div);
+				setTimeout(function(){
+					document.getElementById("snowbg").removeChild(div);
+				},5000);
+			}
+			setInterval(function(){
+				var left = Math.random()*window.innerWidth;
+				var height = Math.random()*window.innerHeight;
+				height=height<200?height+200:height;
+//				var src = "img/snow"+Math.floor(Math.random()*2+1)+".png";//两张图片分别为"snow1.png"、"snow2.png"
+				var num=Math.floor(Math.random()*3+1);//产生随机数1，2，3
+				snow(left,height,num);
+			},500);
+		})();
+	</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3 transform实现图片旋转木马3D浏览效果实例页面</title>
+	</head>
+	<style>
+		body{
+			background: #eee;
+		}
+		.stage{
+			perspective: 800px;
+			margin-top: 200px;
+			position: relative;
+		}
+		.container{
+			position: absolute;
+   			left: 50%;
+   			margin-left: -64px;
+			transform-style: preserve-3d;
+			transition: transform 1s;
+		}
+		.container>img{
+			position: absolute;
+			left: 0px;
+			bottom: 0px;
+			width: 128px;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+		}
+	</style>
+	<body>
+		<div class="stage">
+			<div class="container">
+				<img style="transform: rotateY(0deg) translateZ(131px);" src="img/mm1.jpg" />
+				<img style="transform: rotateY(60deg) translateZ(131px);" src="img/mm8.jpg" />
+				<img style="transform: rotateY(120deg) translateZ(131px);" src="img/mm3.jpg" />
+				<img style="transform: rotateY(180deg) translateZ(131px);" src="img/mm4.jpg" />
+				<img style="transform: rotateY(240deg) translateZ(131px);" src="img/mm10.jpg" />
+				<img style="transform: rotateY(300deg) translateZ(131px);" src="img/mm6.jpg" />
+			</div>
+		</div>
+	</body>
+	<script>
+		(function() {
+			if (typeof window.screenX === "number") {
+				// CSS transform变换应用
+				var transform = function(element, value, key) {
+					key = key || "Transform";
+					["Moz", "O", "Ms", "Webkit", ""].forEach(function(prefix) {
+						element.style[prefix + key] = value;	
+					});	
+					return element;
+				}
+				// 浏览器选择器API
+				var $ = function(selector) {
+					return document.querySelector(selector);
+				};
+				var $$ = function(selector) {
+					return document.querySelectorAll(selector);
+				};
+				
+				var rotate = 360 / $$(".container>img").length;
+
+				// 元素
+				var eleContainer = $(".container"), indexPiece = 0;
+				
+				eleContainer.addEventListener("click", function() {
+					transform(this, "rotateY("+ (-1 * rotate * (++indexPiece)) +"deg)");	
+				});
+				
+			}
+		})();
+	</script>
+</html>

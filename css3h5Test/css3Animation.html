@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.content{
+				margin: 100px;
+			}
+			/*无限循环执行动画*/
+			.get_click{
+		  	   -webkit-animation:test 2000ms  infinite;
+		       animation:test 2000ms  infinite;
+		    }
+		    @-webkit-keyframes test {
+		        0% { -webkit-transform: scale(1);transform: scale(1);}
+		        50% {-webkit-transform: scale(1.2) translate3D(-10px,-20px,-10px);transform: scale(1.2) translate3D(-10px,-20px,-10px);}
+		        100%{-webkit-transform: scale(1) ;transform: scale(1) ;}
+		    }
+		    @keyframes test {
+		        0% { -webkit-transform: scale(1);transform: scale(1);}
+		        50% {-webkit-transform: scale(1.2) translate3D(-10px,-20px,-10px);transform: scale(1.2) translate3D(-10px,-20px,-10px);}
+		        100%{-webkit-transform: scale(1) ;transform: scale(1) ;}
+		    }
+		    
+		    .btn_recording{
+		      width:190px;height:200px;margin:0 auto;background-repeat:no-repeat;
+		      background-image:url("http://udata.youban.com/webimg/weixin/20175th/btn_recording.png");
+		      background-size:3800px 200px;
+		      -webkit-animation:test2 1000ms steps(20) infinite;
+		      animation:test2 1000ms steps(20) infinite;
+		    }
+		    @keyframes test2 {
+		        0% { background-position-x: 0px;}
+		        100%{ background-position-x: -3800px;}
+		    }
+		    
+		    .m-emoji4-box {
+			    width: 4.2rem;
+			    height: 4.4rem;
+			    background: url(http://www.qiyipic.com/common/fix/qixi/emoji4.png) no-repeat;
+			    background-size: 33.6rem 4.4rem
+			}
+			.m-emoji4-move {
+			    -webkit-animation: emoji4-move .8s steps(8) infinite;
+			    animation: emoji4-move .8s steps(8) infinite
+			}
+			@keyframes emoji4-move {
+			    0% {  background-position-x: 0 }
+			    100% {  background-position-x: -33.6rem }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<img class="get_click" src="http://udata.youban.com/webimg/weixin/20170901schoolOpen/school_get_gift_btn_img.png" />
+			<div class="btn_recording"></div>
+			<div class="m-emoji4-box m-emoji4-move"></div>
+		</div>
+	</body>
+</html>

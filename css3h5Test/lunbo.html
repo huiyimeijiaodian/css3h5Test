@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/commonStyle.css" />
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				background: #acebf4;
+			}
+			.clearfix:after{
+				display: block;
+				height: 0px;
+				content: "";
+				visibility: hidden;
+				clear: both;
+				
+			}
+			.header{
+				width: 1200px;
+				height: 480px;
+				margin: 0px auto;
+				background: #eee;
+				position: relative;
+			}
+			.nav-bar{
+				width: 200px;
+				height: 420px;
+				/*float: left;*/
+				background: rgba(250,250,250,0.6);
+				position: absolute;
+				z-index: 6;
+				
+			}
+			.lunbo{
+				/*width: 1200px;*/
+				/*height: 400px;*/
+			}
+			#slider img{
+				height: 420px;
+			}
+			.slider-wrapper{
+				position: relative;	
+			}
+			.slider-wrapper .nivo-controlNav{
+				position: absolute;
+				z-index: 5;
+				left: 50%;
+				margin-top: -80px;
+				margin-left: -26px;
+			}
+			.slider-wrapper .nivo-controlNav a {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				border-radius: 50%;
+				background:white;
+				border: 2px solid #2DC0C0;
+				color: #2DC0C0;
+				margin: 0 2px;
+			}
+			.slider-wrapper .nivo-controlNav a.active{
+				background:#2DC0C0;
+				color: white;
+			}
+			
+			.nivo-directionNav a{
+				visibility: hidden;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background: url(img/arrows.png) no-repeat;
+				text-indent: -9999px;
+			}
+			#slider:hover .nivo-directionNav a{
+				visibility: visible;
+			}
+			.nivo-directionNav a:first-child{
+				margin-left: 20px;
+			}
+			.nivo-directionNav a:last-child{
+				margin-right: 20px;
+				background-position: -30px 0px;
+			}
+			
+			.inhot{
+				height: 12px;
+				background: url(img/H.gif);
+				display: inline-block;
+				text-indent: -9999px;
+				width: 10px;
+			}
+			.bighot{
+				height: 19px;
+				background: url(img/Navhot.gif);
+				display: inline-block;
+				text-indent: -9999px;
+				width: 26px;
+			}
+			
+			/*垂直导航栏*/
+			.nav-head{
+				width:160px;
+				height: 40px;
+				margin: 0px auto;
+				line-height: 40px;
+				background: #2DC0C0;
+				color: white;
+				text-align: center;
+				font-size: 18px;
+			}
+			.nav-content{
+				margin-left: 60px;
+				margin-top: 10px;
+				font-size: 14px;
+				height: 360px;
+			}
+			.nav-content > ul > li{
+				padding-bottom: 5px;
+				
+			}
+			.nav-content > ul > li > a{
+				text-decoration:none;
+				color: black;
+				
+			}
+			
+			/*横向导航栏*/
+			.nav-hor-bar{
+				height: 60px;
+				line-height: 60px;
+				background: #2DC0C0;
+				color: white;
+				font-size: 16px;
+				font-weight: 600;
+				
+			}
+			.nav-hor-bar .nav-center{
+				width: 800px;
+				margin:0px auto;
+				/*display: inline-block;*/
+			}
+			.nav-hor-bar .nav-center >ul{
+				text-align: center;
+			}
+			.nav-hor-bar .nav-center >ul>li{
+				float: left;
+				line-height: 60px;
+				padding: 0px 10px;
+				min-width: 80px;
+			}
+			.nav-hor-bar .nav-center >ul>li.active{
+				background: #2Dd0d0;
+			}
+			.nav-hor-bar .nav-center >ul>li:hover{
+				background: #2Dd0d0;
+			}
+			.nav-hor-bar .nav-center >ul>li>a{
+				color: white;
+			}
+			.nav-hor-bar .nav-right{
+				float: right;
+				margin-right: 40px;
+			}
+			
+			/*内容部分*/
+			.content{
+				width: 1200px;
+				margin: 0px auto;
+				margin-top: 15px;
+			}
+			.common-content{
+				padding: 15px;
+				background: white;
+				min-height: 400px;
+			}
+			.common-content >h2{
+				font-size: 20px;
+				font-weight: 600px;
+				color: #888;
+				padding-bottom:10px;
+				border-bottom: 1px solid #ccc;
+				margin-bottom: 10px;
+			}
+			.common-content ul>li{
+				width: 100px;
+				text-align: center;
+				margin: 10px 5px;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header clearfix">
+			<div class="nav-bar">
+				<div class="nav-head">
+					<h4>精品导航</h4>
+				</div>
+				<div class="nav-content">
+					<ul >
+						<li>
+							<a href="#">美妈三餐&nbsp;<span class="inhot"></span></a>
+						</li>
+						<li>
+							<a href="#">睡前故事</a>
+						</li>
+						<li>
+							<a href="#">唐诗三百首</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="lunbo">
+				<div id="wrapper">
+			        <div class="slider-wrapper">
+			            <div id="slider" class="nivoSlider">
+			                <img src="img/toystory.jpg" data-thumb="img/toystory.jpg" alt="" />
+			                <img src="img/up.jpg" data-thumb="img/up.jpg" alt="" />
+			                <img src="img/walle.jpg" data-thumb="img/walle.jpg" alt=""  />
+			                <img src="img/nemo.jpg" data-thumb="img/nemo.jpg" alt=""/>
+			            </div>
+			        </div>
+			        <!--<div class="footer-banner" style="width:728px; margin:0 auto"></div>-->
+			    </div>
+			</div>
+			<div class="nav-hor-bar">
+				<div class="nav-center ">
+					<ul>
+						<li class="active"><a href="#">首页</a></li>
+						<li><a href="#">小伴龙原创</a></li>
+						<li><a href="#">听儿歌</a></li>
+						<li><a href="#">讲故事</a></li>
+						<li><a href="#">音频</a></li>
+						<li><a href="#">小伴龙</a></li>
+					</ul>
+				</div>
+				<div class="nav-right">
+					<ul>
+						<li>美妈三餐&nbsp;<span class="bighot"></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="common-content original">
+				<!--小伴龙原创-->
+				<h2>小伴龙原创</h2>
+				<div class="original-c">
+					<ul class="clearfix">
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+						<li>
+							<div>
+								<a href="#"><img src="img/1378437241149.jpg"/></a>
+							</div>
+							<p>宝宝小故事</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="common-content childSongs">
+				<!--听歌儿-->
+			</div>
+			<div class="common-content story">
+				<!--讲故事-->
+			</div>
+		</div>
+		<!--<div class="foot">尾部</div>-->
+	</body>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.nivo.slider.pack.js"></script>
+	<script>
+		$.fn.nivoSlider.defaults = {
+	        effect: 'random',
+	        slices: 15,
+	        boxCols: 8,
+	        boxRows: 4,
+	        animSpeed: 500,
+	        pauseTime: 3000,
+	        startSlide: 0,
+	        directionNav: true,
+	        controlNav: true,
+	        controlNavThumbs: false,//缩列图
+	        pauseOnHover: true,
+	        manualAdvance: false,
+	        prevText: '上一页',
+	        nextText: '下一页',
+	        randomStart: false,
+	        beforeChange: function(){},
+	        afterChange: function(){},
+	        slideshowEnd: function(){},
+	        lastSlide: function(){},
+	        afterLoad: function(){}
+	    };
+		 $(window).load(function() {
+	        $('#slider').nivoSlider();
+	    });
+	    $('.slider-wrapper .nivo-controlNav a').click(function(){
+	    	event.stopPropagation();
+	    })
+	     
+	</script>
+</html>

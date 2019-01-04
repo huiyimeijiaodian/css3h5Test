@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3D立方体</title>
+		<style type="text/css">
+			.cubebox{
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				background: #eee;
+				transform-origin: 50px 50px;
+				transform-style: preserve-3d;
+				transform: rotateX(-35deg) rotateY(-25deg);
+				animation: rotateAnim 3s infinite;
+			}
+			.cubebox li{
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				width: 100px;
+				height: 100px;
+				list-style: none;
+				background: radial-gradient(transparent 10%,rgba(0,0,0,0.3) 100%);
+			}
+			.cube_top{
+				transform: rotateX(90deg) translateZ(50px);x
+			}
+			.cube_bottom{
+				transform: rotateX(90deg) translateZ(-50px); 
+			}
+			.cube_left{
+				transform:translateZ(50px);
+			}
+			.cube_right{
+				transform: translateZ(-50px);
+			}
+			.cube_front{
+				transform:rotateY(-90deg)  translateZ(50px);
+			}
+			.cube_back{
+				transform:rotateY(90deg)  translateZ(50px);
+			}
+			
+			@keyframes rotateAnim{
+				from{transform:  rotateX(-35deg) rotateY(-25deg);}
+				to{transform:  rotateX(325deg) rotateY(335deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="cubebox">
+			<li class="cube_top"></li>
+			<li class="cube_bottom"></li>
+			<li class="cube_left"></li>
+			<li class="cube_right"></li>
+			<li class="cube_front"></li>
+			<li class="cube_back"></li>
+		</ul>
+	</body>
+</html>

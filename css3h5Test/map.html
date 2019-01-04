@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.0&key=1b6b6330fccf37ac0d5d17602cd2a441"></script>
+   <script type="text/javascript">
+    
+    var map = new AMap.Map('container',{
+            resizeEnable: true,
+            zoom: 13,
+            center: [116.39,39.9]
+    });
+    AMap.plugin('AMap.Geocoder',function(){
+        var geocoder = new AMap.Geocoder({
+            city: "010"//城市，默认：“全国”
+        });
+        var marker = new AMap.Marker({
+            map:map,
+            bubble:true
+        })
+        
+        var lnglatXY=[116.396574, 39.992706];//地图上所标点的坐标
+		geocoder.getAddress(lnglatXY, function(status, result) {
+	    if (status === 'complete' && result.info === 'OK') {
+	       //获得了有效的地址信息:
+	       //即，result.regeocode.formattedAddress
+	    }else{
+	       //获取地址失败
+	    }
+        map.on('click',function(e){
+            marker.setPosition(e.lnglat);
+            geocoder.getAddress(e.lnglat,function(status,result){
+              if(status=='complete'){
+                 document.getElementById('input').value = result.regeocode.formattedAddress
+              }
+            })
+        })
+
+    });
+    
+    
+});  
+   </script>
+</html>

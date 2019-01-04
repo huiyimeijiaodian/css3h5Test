@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>将html转化为canvas生成图片并保存本地</title>
+	</head>
+	<style>
+		.content{width: 375px;height: 667px;background: #eee;}
+		.content img{width: 100%;}
+		.getImgBtn, .loadImg{display: inline-block; margin:10px; padding: 10px 20px;font-size: 16px; background: #ccc;border: 0;color: black;}
+	</style>
+	<script src="js/html2canvas.min.js"></script>
+	<body>
+		<div class="content" id="canvasHtm">
+			<h5>生成图片</h5>
+			<img src="img/up.jpg" />
+			<p>hello world</p>
+		</div>
+		 <button class="getImgBtn">生成图片</button>
+		 <a class="loadImg" href="" download="downImg">下载图片</a>
+	</body>
+	<script>
+		//1、先引入html2canvas
+		//2、将html转换为canvas,再将canvas转换为base64图片
+		//3、将base64地址赋值给a标签href。(必须带属性download="downImg")
+		//微信限制a标签的download="downImg
+		$('.getImgBtn').click(function(){
+			html2canvas(document.querySelector("#canvasHtm")).then(canvas => {
+				 document.querySelector(".loadImg").setAttribute('href',canvas.toDataURL());
+			});
+		})
+	</script>
+</html>

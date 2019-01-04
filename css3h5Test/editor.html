@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+   <!-- 5.29:wangEditor富文本编辑器：测试成功! -->
+  <link rel="stylesheet" type="text/css" href="css/wangEditor.min.css">
+    <title>发帖</title>
+    
+   </head>
+    <body>
+    
+    <form name="myForm" action="ArticleManage.action"  method="post">  
+       标题: <input type="text" name="title" size="32">（限输入15个文字）<br> 
+      <!--  5.16加个id属性 -->
+       内容：<div rows="10" id="editor" cols="25" name="content" ></div>
+        <input type="submit"  value="提交"> 
+        <input type="reset"  value="重置"> 
+    </form> 
+ <script type="text/javascript" src='js/jquery-2.1.1.min.js'></script>
+<script type="text/javascript" src='js/wangEditor.min.js'></script> 
+<script type="text/javascript">
+    $(function(){
+        $('#editor').wangEditor();
+    });
+</script>
+ </body>
+</html>
